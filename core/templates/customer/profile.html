@@ -1,0 +1,61 @@
+{% extends 'customer/base.html' %}
+{% load bootstrap4 %}
+
+
+
+{% block main %}
+<!-- Basic Information -->
+<b class="text-secondary">Basic Information</b><br />
+<div class="card bg-white mt-2 mb-5">
+    <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form user_form %}
+            {% bootstrap_form customer_form %}
+
+            <input type="hidden" name="action" value="update_profile">
+            <button type="submit" class="btn btn-warning">Save</button>
+        </form>
+    </div>
+</div>
+
+<!-- Password-->
+<b class="text-secondary">Change Password</b><br />
+<div class="card bg-white mt-2 mb-5">
+    <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form password_form %}
+
+
+            <input type="hidden" name="action" value="update_password">
+            <button type="submit" class="btn btn-warning">Save</button>
+        </form>
+    </div>
+</div>
+
+<!-- Phone number-->
+<b class="text-secondary">Phone Number</b><br />
+<div class="card bg-white mt-2 mb-5">
+    <div class="card-body">
+
+
+
+        <div id="get-code" class="input-group mb-3 ">
+            <input type="text" class="form-control" placeholder="Your phone number">
+            <div class="input-group-append">
+                <button class="btn btn-warning" type="button">Send Code</button>
+            </div>
+        </div>
+
+        <div id="verify-code" class="input-group mb-3 ">
+            <input type="text" class="form-control" placeholder="Verification code">
+            <div class="input-group-append">
+                <button class="btn btn-warning" type="button">Verify Code</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

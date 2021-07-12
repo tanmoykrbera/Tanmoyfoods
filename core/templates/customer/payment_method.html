@@ -1,0 +1,35 @@
+{% extends 'customer/base.html' %}
+{% load bootstrap4 %}
+
+
+{% block main %}
+
+<b class="text-secondary">Your Credit/Debit Card</b>
+
+
+<div class="card bg-white mt-2 mb-5">
+    <div class="card-body">
+
+        <div id="change-card" class="input-group">
+            <input type="text" class="form-control" disabled>
+
+            <div class="input-group-append">
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <div id="card-element"></div>
+        <button id="card-button" class="btn btn-warning mt-3" type="button">
+            Save Card
+        </button>
+
+    </div>
+</div>
+
+{% endblock %}
