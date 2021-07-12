@@ -1,8 +1,49 @@
 {% extends 'courier/base.html' %}
 
-{% block content %}
+{% block head %}
+<script
+    src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAP_API_KEY }}&callback=initMap&libraries=places&v=weekly"
+    defer></script>
 
-Available Jobs
+<script>
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 13,
+            center: { lat: 22.0838, lng: 88.0510 },
+        });
+    }
+</script>
+
+
+<style>
+    .gm-ui-hover-effect {
+        display: none !important;
+    }
+
+    #map {
+        flex: 1;
+    }
+
+    small {
+        font-size: 12px;
+        line-height: 1.2rem;
+    }
+
+    .card {
+        border: none;
+    }
+
+    #job-details {
+        display: none;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column h-100" style="padding-bottom: 60px">
+    <div id="map"></div>
+</div>
 
 {% include 'courier/bottom_tabs.html' %}
 
